@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Container from "muicss/lib/react/container";
+import InputForm from "./components/InputForm";
+import Firebbb from "./components/fireb/Firebbb";
+// import { Card } from "./card";
+import { Spisok } from "./components/Spisok";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    currentPage: 0,
+    currentUser: null,
+  };
+
+  changeCurrentPage = (currentPage, currentUser) => {
+    this.setState({ currentPage, currentUser });
+  };
+
+  renderCurrentPage = (page) => {
+    if (page === 1) {
+      return <InputForm />;
+    }
+    if (page === 2) {
+      return <Spisok completed={false} user={this.state.currentUser} />;
+    }
+    if (page === 3) {
+      return <Spisok completed={true} />;
+    }
+    return null;
+  };
+
+  render() {
+    return (
+      <div>
+        <Firebbb
+          changeCurrentPage={this.changeCurrentPage}
+          // fetchCards={this.fetchCards}
+        />
+        <Container>{this.renderCurrentPage(this.state.currentPage)}</Container>
+      </div>
+    );
+  }
 }
 
 export default App;
