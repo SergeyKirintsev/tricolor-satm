@@ -27,7 +27,7 @@ class Header extends React.Component {
           className="btn btn-success ml-2 mt-2"
           onClick={() => this.props.changeCurrentPage(3, currentUser)}
         >
-          Завершено
+          Завершены
         </button>
       </div>
     );
