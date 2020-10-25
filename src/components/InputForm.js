@@ -6,6 +6,7 @@ import Textarea from "muicss/lib/react/textarea";
 import Radio from "muicss/lib/react/radio";
 // import Button from "muicss/lib/react/button";
 import { Card } from "../card";
+import InputMask from 'react-input-mask';
 
 class InputForm extends React.Component {
   state = {
@@ -59,12 +60,18 @@ class InputForm extends React.Component {
     return (
       <Form id="form">
         <legend>Вызвать мастера</legend>
-        <Input
-          id="phone"
-          label="Ваш телефон"
-          floatingLabel={true}
-          required={true}
+          <label>Ваш телефон&nbsp;</label>
+        <InputMask
+            mask="+7 (999) 999-99-99"
+            className="phone"
+            id="phone"
         />
+        {/*<Input*/}
+        {/*  id="phone"*/}
+        {/*  label="Ваш телефон"*/}
+        {/*  floatingLabel={true}*/}
+        {/*  required={true}*/}
+        {/*/>*/}
         <Input
           id="city"
           label="Поселок/город"
