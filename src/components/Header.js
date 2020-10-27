@@ -14,7 +14,7 @@ class Header extends React.Component {
 
     renderCurrentPage = (page, user) => {
         if (page === 1) {
-            return <InputForm/>;
+            return <InputForm changeCurrentPage={this.changeCurrentPage} />;
         }
         if (page === 2) {
             return <Spisok completed={false} user={user}/>;

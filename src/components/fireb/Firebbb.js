@@ -85,7 +85,7 @@ class Firebbb extends React.Component {
             Hello {firebaseApp.auth().currentUser.displayName}.{" "}
             {firebaseApp.auth().currentUser.email} {" "}
             <a
-              href="#"
+              href="#top"
               className={styles.button}
               onClick={() => {
                 // this.props.changeCurrentPage(0);

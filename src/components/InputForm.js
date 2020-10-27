@@ -14,9 +14,8 @@ class InputForm extends React.Component {
     textarea: "Установка",
   };
 
-  handleSubmit(event) {
+  handleSubmit(event, changeCurrentPage) {
     event.preventDefault();
-    // console.log("handleSubmit...");
 
     const phone = document.getElementById("phone").value;
     const city = document.getElementById("city").value;
@@ -37,10 +36,14 @@ class InputForm extends React.Component {
 
     submitBtn.disabled = true;
     // Запрос на сервер
-    Card.create(card).then(() => {
-      form.reset();
-      submitBtn.disabled = false;
-    });
+    Card.create(card)
+        .then(() => {
+          form.reset();
+          submitBtn.disabled = false;
+        })
+        .then(() => {
+          changeCurrentPage(2);
+        });
   }
 
   onChange(ev) {
@@ -124,7 +127,7 @@ class InputForm extends React.Component {
           type="submit"
           className="mui-btn mui-btn--raised mui-btn--primary"
           id="submit"
-          onClick={this.handleSubmit}
+          onClick={(event) => this.handleSubmit(event, this.props.changeCurrentPage)}
         >
           Отправить заявку
         </button>
