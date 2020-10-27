@@ -54,7 +54,7 @@ class Spisok extends React.Component {
 
     return (
       <div>
-        <h2>{!this.props.completed ? <p>В работе</p> : <p>Завершено</p>}</h2>
+        {!this.props.completed ? <h2>В работе</h2> : <h2>Завершены</h2>}
         <ul className="list-group list-group-flush">{listCards}</ul>
       </div>
     );

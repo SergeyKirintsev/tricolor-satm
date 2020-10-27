@@ -83,21 +83,22 @@ class Firebbb extends React.Component {
         {this.state.isSignedIn && (
           <div className={styles.signedIn}>
             Hello {firebaseApp.auth().currentUser.displayName}.{" "}
-            {firebaseApp.auth().currentUser.email} You are now signed In!{" "}
+            {firebaseApp.auth().currentUser.email} {" "}
             <a
-              href="#z"
+              href="#"
               className={styles.button}
               onClick={() => {
-                this.props.changeCurrentPage(0);
+                // this.props.changeCurrentPage(0);
                 firebaseApp.auth().signOut();
               }}
             >
               Sign-out
             </a>
             <Header
-              changeCurrentPage={this.props.changeCurrentPage}
+              // changeCurrentPage={this.props.changeCurrentPage}
               currentUser={firebaseApp.auth().currentUser.displayName}
             />
+            <br/>
           </div>
         )}
       </div>

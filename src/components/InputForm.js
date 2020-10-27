@@ -60,7 +60,8 @@ class InputForm extends React.Component {
     return (
       <Form id="form">
         <legend>Вызвать мастера</legend>
-          <label>Ваш телефон&nbsp;</label>
+
+        <label>Ваш телефон&nbsp;</label>
         <InputMask
             mask="+7 (999) 999-99-99"
             className="phone"
