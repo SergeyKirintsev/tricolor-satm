@@ -35,7 +35,7 @@ class Spisok extends React.Component {
 
     const listCards = filetredArr.map((card) => (
       <li key={card.id} className="list-group-item">
-        {new Date(card.date).toLocaleDateString()} <mark>{card.phone}</mark>{" "}
+        {new Date(card.date).toLocaleDateString()} <mark><a href={"tel:" + card.phone}>{card.phone}</a></mark>{" "}
         <br />
         <u>{card.comment}</u> <strong>{card.city}</strong> {card.street}
         {"  "}
