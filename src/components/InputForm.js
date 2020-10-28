@@ -61,8 +61,10 @@ class InputForm extends React.Component {
 
   render() {
     return (
+<>
+        <h3>Вызвать мастера</h3>
+
       <Form id="form">
-        <legend>Вызвать мастера</legend>
 
         <label>Ваш телефон&nbsp;</label>
         <InputMask
@@ -132,6 +134,7 @@ class InputForm extends React.Component {
           Отправить заявку
         </button>
       </Form>
+    </>
     );
   }
 }

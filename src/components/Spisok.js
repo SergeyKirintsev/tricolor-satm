@@ -28,12 +28,12 @@ class Spisok extends React.Component {
   render() {
     const { cards } = this.state;
 
-    const filetredArr = cards.filter(
+    const filteredArr = cards.filter(
       (card) => card.completed === this.props.completed
     );
-    // console.log("filetredArr", filetredArr);
+    // console.log("filteredArr", filteredArr);
 
-    const listCards = filetredArr.map((card) => (
+    const listCards = filteredArr.map((card) => (
       <li key={card.id} className="list-group-item">
         {new Date(card.date).toLocaleDateString()} <mark><a href={"tel:" + card.phone}>{card.phone}</a></mark>{" "}
         <br />
@@ -54,7 +54,7 @@ class Spisok extends React.Component {
 
     return (
       <div>
-        {!this.props.completed ? <h2>В работе</h2> : <h2>Завершены</h2>}
+        <h3>{!this.props.completed ? <span>В работе - </span> : <span>Завершены - </span>} {filteredArr.length}</h3>
         <ul className="list-group list-group-flush">{listCards}</ul>
       </div>
     );
