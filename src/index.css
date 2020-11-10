@@ -26,3 +26,7 @@ code {
 .modal .modal-content {
   padding: 1rem;
 }
+
+.btn {
+  margin-left: 2px;
+}

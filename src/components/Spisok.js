@@ -11,17 +11,25 @@ class Spisok extends React.Component {
   }
 
   fetchData() {
-    Card.fetch(1).then((cards) => {
+    Card.fetch().then((cards) => {
       this.setState({ cards });
     });
   }
 
   toggleHandler = (id, street) => {
-    // console.log(id);
     const shouldRemove = window.confirm(`${street}... Завершаем?`);
     if (shouldRemove) {
       const { user } = this.props;
       Card.update(id, user).then(() => this.fetchData());
+    }
+  };
+
+  addComment = (id, comment) => {
+    let addedComment = prompt('Добавьте комментарий').trim();
+    if (addedComment !== null && addedComment.length > 0) {
+      const newComment = comment + ' // ' + addedComment;
+      const { user } = this.props;
+      Card.update(id, user, newComment).then(() => this.fetchData());
     }
   };
 
@@ -40,6 +48,15 @@ class Spisok extends React.Component {
         <u>{card.comment}</u> <strong>{card.city}</strong> {card.street}
         {"  "}
         {this.props.completed && <mark>Завершил: {card.author}</mark>}
+        {!this.props.completed && (
+            <button
+                type="button"
+                className="btn btn-outline-info btn-sm"
+                onClick={() => this.addComment(card.id, card.comment)}
+            >
+              Коммент
+            </button>
+        )}
         {!this.props.completed && (
           <button
             type="button"

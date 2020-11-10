@@ -1,20 +1,30 @@
 export class Card {
-  static update(cardId, user) {
+  static update(cardId, user, comment = null) {
     const url =
       "https://tricolor-77333.firebaseio.com/cards/" + cardId + ".json";
     // const card2 = { completed: true };
-    console.log(url);
+    //console.log(url);
+
+    let fetchBody
+
+      if (comment==null) {
+        fetchBody = { completed: true, author: user }
+    } else {
+        fetchBody = { comment }
+    }
+
     return fetch(url, {
       method: "PATCH",
-      body: JSON.stringify({ completed: true, author: user }),
+      // body: JSON.stringify({ completed: true, author: user }),
+      body: JSON.stringify(fetchBody),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      });
+      // .then((response) => response.json())
+      // .then((response) => {
+      //   console.log(response);
+      // });
   }
 
   static create(card) {
@@ -31,7 +41,7 @@ export class Card {
       });
   }
 
-  static fetch(token) {
+  static fetch() {
     // if (!token) {
     //   return Promise.resolve('<p class="error">У вас нет токена</p>');
     // }
