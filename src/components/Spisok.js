@@ -16,9 +16,9 @@ class Spisok extends React.Component {
     });
   }
 
-  toggleHandler = (id) => {
+  toggleHandler = (id, street) => {
     // console.log(id);
-    const shouldRemove = window.confirm("Завершаем?");
+    const shouldRemove = window.confirm(`${street}... Завершаем?`);
     if (shouldRemove) {
       const { user } = this.props;
       Card.update(id, user).then(() => this.fetchData());
@@ -44,7 +44,7 @@ class Spisok extends React.Component {
           <button
             type="button"
             className="btn btn-outline-warning btn-sm"
-            onClick={() => this.toggleHandler(card.id)}
+            onClick={() => this.toggleHandler(card.id, card.street)}
           >
             Завершить
           </button>
